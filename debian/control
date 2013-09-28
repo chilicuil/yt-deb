@@ -1,22 +1,23 @@
-Source: yt
+Source: youtube-cli
 Section: web
 Priority: extra
 Maintainer: Javier P.L. <chilicuil@ubuntu.com>
+Uploaders: Dominik George <nik@naturalnet.de>
 Build-Depends:
  debhelper (>= 9),
  python-setuptools
 Build-Depends-Indep:
  python
 X-Python-Version: >= 2.6
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 Homepage: https://github.com/rjw57/yt
 Vcs-Git: git://github.com/chilicuil/yt-deb.git
 Vcs-Browser: https://github.com/chilicuil/yt-deb.git
 
-Package: yt
+Package: youtube-cli
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}
-Recommends: mplayer2, youtube-dl
+Depends: ${misc:Depends}, ${python:Depends}, mplayer2 | mplayer
+Recommends: youtube-dl
 Description: command-line YouTube client
  yt is a command-line front-end to YouTube which allows you to browse YouTube
  videos and play them directly from the command-line. It uses youtube-dl and

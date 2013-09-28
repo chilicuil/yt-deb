@@ -1,4 +1,4 @@
-yt (2013.09.28-1) unstable; urgency=low
+youtube-cli (0~20130928+gitbee8fd44c0-1) unstable; urgency=low
 
   * Initial release, closes: #724801.
 

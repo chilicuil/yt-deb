@@ -1,0 +1,16 @@
+Description: Do not create the pi-yt script
+ The pi-yt entrypoint script defaults to omxplayer, which is not in Debian.
+ We remove this entrypoint so the script is not installed unnecessarily.
+Author: Dominik George <nik@naturalnet.de>
+--- a/setup.py
++++ b/setup.py
+@@ -34,8 +34,7 @@ setup(name='whitey',
+     entry_points={
+         'console_scripts':
+             [
+-                'yt=yt:main',
+-                'pi-yt=yt:main_with_omxplayer'
++                'yt=yt:main'
+             ]
+     }
+ )

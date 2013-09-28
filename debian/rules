@@ -1,13 +1,34 @@
 #!/usr/bin/make -f
+
+DEB_VERSION:=$(shell dpkg-parsechangelog -n1 | sed -n '/^Version: /s///p')
+DEB_UPSTREAM_VERSION:=$(shell DEB_VERSION=${DEB_VERSION}; echo $${DEB_VERSION%-*})
+DEB_MASTER_VERSION:=$(shell DEB_UPSTREAM_VERSION=${DEB_UPSTREAM_VERSION}; echo $${DEB_UPSTREAM_VERSION\#*+git})
+
 %:
 	dh $@ --with python2 --buildsystem=python_distutils
 
 override_dh_install:
 	dh_install
+	mv debian/youtube-cli/usr/bin/yt debian/youtube-cli/usr/bin/youtube-cli
 
 override_dh_installdocs:
 	dh_installdocs
+	mv debian/youtube-cli/usr/share/doc/youtube-cli/NEWS.txt debian/youtube-cli/usr/share/doc/youtube-cli/CHANGELOG.txt
+
+override_dh_installman:
+	dh_installman
+	mv debian/youtube-cli/usr/share/man/man1/yt.1 debian/youtube-cli/usr/share/man/man1/youtube-cli.1
 
 override_dh_clean:
 	dh_clean
-	rm -rf yt.egg-info
+	rm -rf yt.egg-info src/whitey.egg-info
+
+get-orig-source:
+	rm -rf debian/tmp; mkdir debian/tmp
+	cd debian/tmp; wget https://github.com/rjw57/yt/archive/${DEB_MASTER_VERSION}.tar.gz
+	cd debian/tmp; tar xvzf ${DEB_MASTER_VERSION}.tar.gz
+	cd debian/tmp; mv yt-* youtube-cli-${DEB_UPSTREAM_VERSION}
+	cd debian/tmp; tar cvJf youtube-cli_${DEB_UPSTREAM_VERSION}.orig.tar.xz youtube-cli-${DEB_UPSTREAM_VERSION}
+	mv debian/tmp/youtube-cli_${DEB_UPSTREAM_VERSION}.orig.tar.xz .
+	mv debian/tmp/youtube-cli-${DEB_UPSTREAM_VERSION} .
+	rm -rf debian/tmp
