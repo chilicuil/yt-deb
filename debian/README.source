@@ -5,6 +5,7 @@ A quick summary of how one can update the Debian packaging of yt is
 to:
 
     git clone --dept=1 https://github.com/rjw57/yt yt-yyyy.mm.dd
+    tar zcf yt_yyyy.mm.dd.orig.tar.gz yt-yyyy.mm.dd/
     cd yt-yyyy.mm.dd
     git clone --dept=1 https://github.com/chilicuil/yt-deb
     mv yt-deb/debian . && rm yt-deb
