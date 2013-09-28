@@ -1,0 +1,18 @@
+Debian packaging for yt
+-----------------------
+
+A quick summary of how one can update the Debian packaging of yt is
+to:
+
+    git clone --dept=1 https://github.com/rjw57/yt
+    cd yt
+    git clone --dept=1 https://github.com/chilicuil/yt-deb
+    [ Make here some adaptations, like updating debian/patches, if needed ]
+    debuild -S
+    upload .dsc | .changes files
+
+These are the important steps and may need to be changed according to
+deviations, say, in the release process of upstream releases (e.g., if
+upstream changes the location where the tarballs reside).
+
+ -- Javier P.L. <chilicuil@ubuntu.com>, Sat 28 Sep 2013 11:04:54 PM CDT
