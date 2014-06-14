@@ -1,22 +1,15 @@
 Debian packaging for youtube-cli
 --------------------------------
 
-A quick summary of how one can update the Debian packaging of
-youtube-cli is:
+Steps to update this package:
 
-    git clone --dept=1 https://github.com/chilicuil/yt-deb
-    cd yt-deb
-    dch -i #insert proper new upstream version 
+    git clone --dept=1 https://github.com/minos-org/youtube-cli-deb
+    cd youtube-cli-deb
+    dch -i #insert proper new upstream version (git revision between +/-)
     debian/rules get-orig-source
     mv debian youtube-cli-*
     cd youtube-cli-*
     [ Make here some adaptations, like updating debian/patches, if needed ]
-    $EDITOR debian/changelog
+    [ add more details if required, $EDITOR debian/changelog ]
     debuild -S
     upload .dsc | .changes files
-
-These are the important steps and may need to be changed according to
-deviations, say, in the release process of upstream releases (e.g., if
-upstream changes the location where the tarballs reside).
-
- -- Javier P.L. <chilicuil@ubuntu.com>, Sat 28 Sep 2013 11:04:54 PM CDT
