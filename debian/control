@@ -1,7 +1,7 @@
 Source: youtube-cli
 Section: web
 Priority: extra
-Maintainer: Javier P.L. <chilicuil@ubuntu.com>
+Maintainer: Javier López <m@javier.io>
 Uploaders: Dominik George <nik@naturalnet.de>
 Build-Depends:
  debhelper (>= 9),
@@ -11,8 +11,8 @@ Build-Depends-Indep:
 X-Python-Version: >= 2.6
 Standards-Version: 3.9.4
 Homepage: https://github.com/rjw57/yt
-Vcs-Git: git://github.com/chilicuil/yt-deb.git
-Vcs-Browser: https://github.com/chilicuil/yt-deb.git
+Vcs-Git: git://github.com/javier-lopez/yt-deb.git
+Vcs-Browser: https://github.com/javier-lopez/yt-deb.git
 
 Package: youtube-cli
 Architecture: all
